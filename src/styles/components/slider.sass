@@ -1,0 +1,57 @@
+@use '../variables'
+@use '../mixins'
+
+.slider-container
+  height: 100%
+  position: relative
+
+  #left-arrow
+    position: absolute
+    top: 50%
+    transform: translate(0, -50%)
+    left: 32px
+    font-size: 25px
+    color: variables.$bg-color-secondary
+    z-index: 1
+    cursor: pointer
+
+  #right-arrow
+    position: absolute
+    top: 50%
+    transform: translate(0, -50%)
+    right: 32px
+    font-size: 25px
+    color: variables.$bg-color-secondary
+    z-index: 1
+    cursor: pointer
+    
+  :hover
+    color: rgba(221,46,118,1)
+    border-radius: 35px
+
+  .projects-btn
+    @include mixins.btn
+    position: absolute
+    top: 85%
+    right: 240px
+
+
+
+  .dots-container
+    display: flex
+    justify-content: center
+    align-items: center
+    
+
+    #slider-dot
+      margin: 0 3px
+      cursor: pointer
+      font-size: 30px
+      color: #fff
+      
+
+    #slider-dot-choosed
+      margin: 0 3px
+      cursor: pointer
+      font-size: 30px
+      color: rgba(221,46,118,1)
