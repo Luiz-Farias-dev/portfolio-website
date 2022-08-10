@@ -9,7 +9,6 @@ type Props = {
 
 export default function Slider({slides}: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [contador, setContador] = useState(0);
   const projectUrl = [
     {url: 'https://aluroni-restaurant.netlify.app'},
     {url: 'https://pokemon-search-app-luiz.netlify.app'},
@@ -25,11 +24,15 @@ export default function Slider({slides}: Props) {
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    
+    const x = setTimeout(() => {
       goToNext()
-      setContador(oldContador => oldContador + 1)
     }, 7000)
-  },[contador])
+    return () => {
+      clearTimeout(x)
+    };
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+    },[currentIndex])
 
   
   function goToPrevious() {
@@ -58,8 +61,8 @@ export default function Slider({slides}: Props) {
       <a href={projectUrl[currentIndex].url} className="projects-btn">Ver projeto</a>
       <div style={slideStyles}></div>
       <div className='dots-container'>
-        {slides.map((item) => (
-          <div key={item.title} onClick={() => setCurrentIndex(item.id)}>{handleDots(item.id)}</div>
+        {slides.map((item, index) => (
+          <div key={index} onClick={() => setCurrentIndex(item.id)}>{handleDots(item.id)}</div>
         ))}
       </div>
     </div>
