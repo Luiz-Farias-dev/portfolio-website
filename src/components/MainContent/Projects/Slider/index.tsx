@@ -25,11 +25,11 @@ export default function Slider({slides}: Props) {
 
   useEffect(() => {
     
-    const x = setTimeout(() => {
-      goToNext()
+    const timeOutId = setTimeout(() => {
+      goToNext();
     }, 7000)
     return () => {
-      clearTimeout(x)
+      clearTimeout(timeOutId);
     };
     //eslint-disable-next-line react-hooks/exhaustive-deps
     },[currentIndex])
